@@ -3,7 +3,7 @@
 
 \begin{document}
 
-\title{Reasoning in Neural Networks}
+\title{Reasoning in Artificial Neural Networks}
 
 \author{%
   \IEEEauthorblockN{Vasin Srisupavanich}\\
@@ -19,30 +19,51 @@ The abstract goes here.
 
 
 \begin{IEEEkeywords}
-Deep Learning, Neural Networks, Reasoning
+Deep learning, neural networks, reasoning, graph neural networks, neural-symbolic, neural turing machine
 \end{IEEEkeywords}
 
 
 
 \section{Introduction}
 
-\IEEEPARstart{T}{his} paper \cite{bochkovskiy2020yolov4}
+\IEEEPARstart{T}{he} ability to reason is one of the most important features of human intelligence. 
+It allows us to understand abstract concepts and make complex decisions.
+Human excels at tasks that require high level understanding, such as planning and symbol manipulation, 
+while the current state of machines are limited to simpler pattern matching problems.
+Incorporating reasoning ability to machines has been a long standing goal, but a very difficult challenge in the field of Artificial Intelligence. 
+Solving this problem would mean a significant step toward artificial general intelligence, which will ultimately benefits humankind greatly. 
+This paper reviews recent approaches in building artificial neural networks that can learn to reason, 
+and overview the current state of the art results and applications from deep learning systems with reasoning capability.
 
+\section{Background}
+Over the past decade, deep learning systems have enjoyed tremendous success particularly in the area of computer vision and natural language processing.
+Machines can now learn to recognize an object in an image with higher accuracy than human, synthesize a novel, and beat a world champion Go player.
+However, they still struggle in tasks that involve reasoning operations. For example, deep learning system today have difficulty in
+identify cause and effect (causal reasoning), and understanding what is to the left of an object (spatial-temporal reasoning).
+Historically, the approach to create an AI system capable of reasoning has been from a symbolic point of view.
+In a symbolic AI, knowledge is represented as symbols, rules are handcrafted by human, and reasoning is the process of inference.
+However, these systems do not scale to real-world applications, as fixed symbols and rules cannot represents enough information. 
+This has paved the way to the current trend of a sub-symbolic approach, which utilise artificial neural networks. 
+With the goal to improve deep learning system beyond pattern matching, AI researchers have tried to combine symbolic AI with neural networks,
+which has resulted in a subfield called Neural-symbolic. Apart from that, researchers also take inspiration from neuroscience. 
+As human reasoning involves extracting knowledge from memory and paying attention to specific part of information, 
+this has resulted in an extension of neural network in the form of memory and attention mechanism. 
 
-\subsection{Subsection Heading Here}
-Subsection text here.
+\subsection{Artificial Neural Network}
 
+\section{Main Approaches}
+\subsection{Attention and Memory}
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\subsection{Graph Neural Network}
 
+\subsection{Neural-Symbolic}
+
+\section{Discussion}
 
 \section{Conclusion}
-The conclusion goes here.
 
-\bibliographystyle{IEEEtran}
-\bibliography{references}
-
+% \bibliographystyle{IEEEtran}
+% \bibliography{references}
 
 
 \end{document}

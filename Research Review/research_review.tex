@@ -1,13 +1,13 @@
 \documentclass[journal]{IEEEtran}
 
+\usepackage{graphicx}
 
 \begin{document}
 
 \title{Reasoning in Artificial Neural Networks}
 
 \author{%
-  \IEEEauthorblockN{Vasin Srisupavanich}\\
-  \IEEEauthorblockA{vs2n19@soton.ac.uk}
+  \IEEEauthorblockN{Vasin Srisupavanich}
 }
 
 \maketitle
@@ -40,21 +40,48 @@ Over the past decade, deep learning systems have enjoyed tremendous success part
 Machines can now learn to recognize an object in an image with higher accuracy than human, synthesize a novel, and beat a world champion Go player.
 However, they still struggle in tasks that involve reasoning operations. For example, deep learning system today have difficulty in
 identify cause and effect (causal reasoning), and understanding what is to the left of an object (spatial-temporal reasoning).
+
 Historically, the approach to create an AI system capable of reasoning has been from a symbolic point of view.
 In a symbolic AI, knowledge is represented as symbols, rules are handcrafted by human, and reasoning is the process of inference.
 However, these systems do not scale to real-world applications, as fixed symbols and rules cannot represents enough information. 
-This has paved the way to the current trend of a sub-symbolic approach, which utilise artificial neural networks. 
+This has paved the way to the current trend of a sub-symbolic deep learning approach, which utilise artificial neural networks. 
+
 With the goal to improve deep learning system beyond pattern matching, AI researchers have tried to combine symbolic AI with neural networks,
-which has resulted in a subfield called Neural-symbolic. Apart from that, researchers also take inspiration from neuroscience. 
+which became subfield called Neural-symbolic. Apart from that, researchers also take inspiration from neuroscience. 
 As human reasoning involves extracting knowledge from memory and paying attention to specific part of information, 
 this has resulted in an extension of neural network in the form of memory and attention mechanism. 
 
-\subsection{Artificial Neural Network}
-
 \section{Main Approaches}
-\subsection{Attention and Memory}
+\subsection{Attention Mechanism}
+Attention mechanism was first introduced in 2014 for a machine translation task \cite{bahdanau2014neural}.
+Since then this mechanism has became an important tool for deep learning in various applications. 
+This idea is loosely motivated by how human biological system works. For instance, human visual attention allows us to 
+focus on specific region with high resolution, while ignoring other irrelevant information. 
+In the context of machine translation, attention model enables the machine to focus on specific words at a time 
+rather than the full sentence.
 
-\subsection{Graph Neural Network}
+In a neural machine translation model (NMT), the architecture consists of an encoder-decoder (seq2seq) structure.
+An encoder, typically a recurrent neural networks (RNN), learn to encode a source sentence into a fixed length vector.
+Then the decoder network output the encoded vector into another language. Figure \ref{NMT}(a) shows the traditional encoder-decoder architecture.
+The apparent problem of this architecture is that the model tends to forget relevant information in a long sentence.
+With the addition of attention model (figure \ref{NMT}(b)), this problem is mitigated, 
+as the decoder can learn to attend to different parts of the source sentence. 
+The attention weights, which are from a feed forward neural networks, are jointly train along with the encoder-decoder networks.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{../NMT.png}
+  \caption{NMT architecture (a) traditional (b) with attention model.
+  Figure from \cite{chaudhari1904attentive}}
+  \label{NMT}
+\end{figure}
+
+Another example of how attention 
+In \cite{xu2015show}, 
+Broadly speaking, there are mainly two types of attention models: soft and hard. 
+
+\subsection{Memory Augmented Neural Networks}
+
+\subsection{Graph Neural Networks}
 
 \subsection{Neural-Symbolic}
 
@@ -62,8 +89,8 @@ this has resulted in an extension of neural network in the form of memory and at
 
 \section{Conclusion}
 
-% \bibliographystyle{IEEEtran}
-% \bibliography{references}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
 
 
 \end{document}

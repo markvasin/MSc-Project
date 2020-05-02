@@ -28,11 +28,11 @@ Deep learning, neural networks, reasoning, graph neural networks, neural-symboli
 
 \IEEEPARstart{T}{he} ability to reason is one of the most important features of human intelligence. 
 It allows us to understand abstract concepts and make complex decisions.
-Human excels at tasks that require high level understanding, such as planning and symbol manipulation, 
+Human excels at tasks that require deliberate thinking, such as planning and symbol manipulation, 
 while the current state of machines are limited to simpler pattern matching problems.
-Incorporating reasoning ability to machines has been a long standing goal, but a very difficult challenge in the field of Artificial Intelligence. 
+Incorporating reasoning ability to machines has been a long standing goal, but a very difficult challenge in the field of Artificial Intelligence (AI). 
 Solving this problem would mean a significant step toward artificial general intelligence, which will ultimately benefits humankind greatly. 
-This paper reviews recent approaches in building artificial neural networks that can learn to reason, 
+This paper reviews recent approaches in building artificial neural networks (ANN) that can learn to reason, 
 and overview the current state of the art results and applications from deep learning systems with reasoning capability.
 
 \section{Background}
@@ -75,11 +75,46 @@ The attention weights, which are from a feed forward neural networks, are jointl
   \label{NMT}
 \end{figure}
 
-Another example of how attention 
-In \cite{xu2015show}, 
-Broadly speaking, there are mainly two types of attention models: soft and hard. 
+In another influential paper by Xu et al \cite{xu2015show}, attention model is applied to generate caption from images. 
+In this task, convolutional neural networks (CNN) is used as an encoder to extract features from raw images.
+Then a long short-term memory network (LSTM) is used to generate the words, conditioned on the attention weights.
+Figure \ref{attention} demonstrate how the model learn to attend to specific part of the image with the corresponding word. 
+Also proposed in \cite{xu2015show}, the attention models can be classified in two types: soft and hard attention. 
+In soft attention, the model is smooth and differentiable end to end, and the context vector is computed by the weighted average of the whole image. 
+In contrast, in hard attention, the context vector is computed from stochastically sampled patch of image. 
+The hard attention model can be faster when making inference, however, they are difficult to optimized, and require reinforcement learning to train.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{../attention.png}
+  \caption{Visualization of the attended region conditioned on the corresponding word.
+  Figure from \cite{xu2015show}}
+  \label{attention}
+\end{figure}
 
 \subsection{Memory Augmented Neural Networks}
+Similar to human, in order to retrieve the information necessary for the desired tasks, a machine needs to maintain some memory that needs to be efficiently organized and queried. 
+This is particularly essential for complex tasks, such as multi-hop reasoning. Traditional RNN and its variant LSTM can memorize information in the hidden states,
+however, they are limited to only short term dependencies. Recent approaches to alleviate this issues involves explicit memory representation and the use of external memory, 
+as proposed in Neural Turing Machine \cite{graves2014neural} and Memory Networks \cite{weston2014memory}.
+
+A Neural Turing Machine (NTM) contains two major components: a neural network controller and a memory bank (Figure \ref{NTM}). 
+A controller can be any type of neural networks, feed forward or RNN, and is responsible for read and write operations on the memory matrix.
+The read and write operations are done selectively by soft attention mechanism, making every components fully differentiable, 
+and thereby the whole model can be trained using gradient descent. The experiments reported in \cite{graves2014neural} have shown that NTM significantly
+outperforms traditional LSTM in tasks, such as copying and sorting. Memory networks \cite{graves2014neural} are similar to NTM in the sense that they both utilise external memory, attention mechanism to select information from memory, and
+can be trained end to end with gradient based learning. However, one major difference is that the memory cells in the memory networks are more static, 
+as controller in memory networks only allowed read operation.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{../NTM.png}
+  \caption{Architecture of Neural Turing Machine}
+  \label{NTM}
+\end{figure}
+
+Another recent neural networks model, utilizing both attention and memory, designed to facilitate explicit reasoning is the MAC networks \cite{hudson2018compositional}.
+In contrast to NTM, the MAC networks don't utilizing a global external memory. Instead, each node (MAC cell) is recurrent, and has its own memory and control state.
+In contrast to traditional neural networks, the separation between control and memory encourages the networks to 
+learn the computational process and reasoning operations, rather than to approximate direct transformation between the input and output.
 
 \subsection{Graph Neural Networks}
 

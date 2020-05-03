@@ -115,10 +115,38 @@ Another recent neural networks model, utilizing both attention and memory, desig
 In contrast to NTM, the MAC networks don't utilizing a global external memory. Instead, each node (MAC cell) is recurrent, and has its own memory and control state.
 In contrast to traditional neural networks, the separation between control and memory encourages the networks to 
 learn the computational process and reasoning operations, rather than to approximate direct transformation between the input and output.
+Figure \ref{mac-clevr} shows the result of the MAC networks from a visual reasoning task using CLEVR data set \cite{johnson2017clevr}. 
+The MAC networks was able to achieve 98.94\% accuracy, halving the error rate from the best prior model.
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{../mac-clevr.png}
+  \caption{Example of MAC networks performing novel visual reasoning task. Figure from \cite{hudson2018compositional}}
+  \label{mac-clevr}
+\end{figure}
 
 \subsection{Graph Neural Networks}
 
 \subsection{Neural-Symbolic}
+
+In contrast to the purely sub-symbolic systems mention in the previous approaches, neural-symbolic is the subfield that try to integrate symbolic AI with the deep learning system. 
+The idea is that the symbolic part world help the system logically reason about symbols, which is what traditional neural networks are weak at, 
+while the neural network part would allow the system to learn, which the symbolic AI is not capable of.
+
+In a visual question answering (VQA) task, recent neural-symbolic systems: NS-VQA \cite{nsvqa} and NS-CL \cite{Mao2019NeuroSymbolic} employed deep representation 
+for visual recognition and language understanding, while the reasoning part is solved by symbolic program execution.
+The framework proposed in NS-CL contains three separate modules: 
+a visual module where the objects are detected and vector representations are extracted, 
+a semantic parser where the question text is parsed into a tree of predefined domain specific language (DSL) of executable program,
+and a symbolic program executer which take in the parsed program and vector representation of objects to derive the answer. 
+It has been shown that this method requires significantly less amount of training data to accurately answer questions, 
+and was able to generalize to new scenes and questions better than traditional neural networks based method. 
+Another added benefit of the neural-symbolic system is that the results are fully interpretable, as the execution trace is available.
+Figure \ref{nscl} shows the result of this model on the VQS dataset, with the generated symbolic program.
+
+\begin{figure}[htb]
+  \includegraphics[width=\linewidth]{../nscl.png}
+  \caption{Result of NS-CL on the VQS dataset. Figure from \cite{Mao2019NeuroSymbolic}}
+  \label{nscl}
+\end{figure}
 
 \section{Discussion}
 

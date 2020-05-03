@@ -69,7 +69,7 @@ as the decoder can learn to attend to different parts of the source sentence.
 The attention weights, which are from a feed forward neural networks, are jointly train along with the encoder-decoder networks.
 
 \begin{figure}[htb]
-  \includegraphics[width=\linewidth]{../NMT.png}
+  \includegraphics[width=\linewidth]{NMT.png}
   \caption{NMT architecture (a) traditional (b) with attention model.
   Figure from \cite{chaudhari1904attentive}}
   \label{NMT}
@@ -85,7 +85,7 @@ In contrast, in hard attention, the context vector is computed from stochastical
 The hard attention model can be faster when making inference, however, they are difficult to optimized, and require reinforcement learning to train.
 
 \begin{figure}[htb]
-  \includegraphics[width=\linewidth]{../attention.png}
+  \includegraphics[width=\linewidth]{attention.png}
   \caption{Visualization of the attended region conditioned on the corresponding word.
   Figure from \cite{xu2015show}}
   \label{attention}
@@ -106,7 +106,7 @@ can be trained end to end with gradient based learning. However, one major diffe
 as controller in memory networks only allowed read operation.
 
 \begin{figure}[htb]
-  \includegraphics[width=\linewidth]{../NTM.png}
+  \includegraphics[width=\linewidth]{NTM.png}
   \caption{Architecture of Neural Turing Machine}
   \label{NTM}
 \end{figure}
@@ -118,7 +118,7 @@ learn the computational process and reasoning operations, rather than to approxi
 Figure \ref{mac-clevr} shows the result of the MAC networks from a visual reasoning task using CLEVR data set \cite{johnson2017clevr}. 
 The MAC networks was able to achieve 98.94\% accuracy, halving the error rate from the best prior model.
 \begin{figure}[htb]
-  \includegraphics[width=\linewidth]{../mac-clevr.png}
+  \includegraphics[width=\linewidth]{mac-clevr.png}
   \caption{Example of MAC networks performing novel visual reasoning task. Figure from \cite{hudson2018compositional}}
   \label{mac-clevr}
 \end{figure}
@@ -131,7 +131,7 @@ In contrast to the purely sub-symbolic systems mention in the previous approache
 The idea is that the symbolic part world help the system logically reason about symbols, which is what traditional neural networks are weak at, 
 while the neural network part would allow the system to learn, which the symbolic AI is not capable of.
 
-In a visual question answering (VQA) task, recent neural-symbolic systems: NS-VQA \cite{nsvqa} and NS-CL \cite{Mao2019NeuroSymbolic} employed deep representation 
+In a visual question answering (VQA) task, recent neural-symbolic systems: NS-VQA \cite{nsvqa} and NS-CL \cite{Mao2019NeuroSymbolic} employed deep representation learning
 for visual recognition and language understanding, while the reasoning part is solved by symbolic program execution.
 The framework proposed in NS-CL contains three separate modules: 
 a visual module where the objects are detected and vector representations are extracted, 
@@ -143,7 +143,7 @@ Another added benefit of the neural-symbolic system is that the results are full
 Figure \ref{nscl} shows the result of this model on the VQS dataset, with the generated symbolic program.
 
 \begin{figure}[htb]
-  \includegraphics[width=\linewidth]{../nscl.png}
+  \includegraphics[width=\linewidth]{nscl.png}
   \caption{Result of NS-CL on the VQS dataset. Figure from \cite{Mao2019NeuroSymbolic}}
   \label{nscl}
 \end{figure}

@@ -14,15 +14,16 @@
 
 
 \begin{abstract}
-The abstract goes here.
+Over the past decade, deep learning systems have enjoyed tremendous success in the area of computer vision and natural language understanding.
+However, these systems still struggle in tasks which require deliberate thinking and reasoning process. 
+Recently, many approaches to extends the capability of the neural networks have emerged. 
+This paper reviews several recent approaches which takes inspiration from human's cognitive process and symbolic view of artificial intelligence
+to solve reasoning tasks, and outline future research directions in this challenging problem.
 \end{abstract}
 
-
 \begin{IEEEkeywords}
-Deep learning, neural networks, reasoning, graph neural networks, neural-symbolic, neural turing machine
+deep learning, artificial neural networks, reasoning, attention, memory, graph neural networks, neural-symbolic
 \end{IEEEkeywords}
-
-
 
 \section{Introduction}
 
@@ -31,23 +32,19 @@ It allows us to understand abstract concepts and make complex decisions.
 Human excels at tasks that require deliberate thinking, such as planning and symbol manipulation, 
 while the current state of machines are limited to simpler pattern matching problems.
 Incorporating reasoning ability to machines has been a long standing goal, but a very difficult challenge in the field of Artificial Intelligence (AI). 
-Solving this problem would mean a significant step toward artificial general intelligence, which will ultimately benefits humankind greatly. 
+Solving this problem would mean a significant step toward artificial general intelligence, which will ultimately benefits humankind. 
 This paper reviews recent approaches in building artificial neural networks (ANN) that can learn to reason, 
 and overview the current state of the art results and applications from deep learning systems with reasoning capability.
 
 \section{Background}
-Over the past decade, deep learning systems have enjoyed tremendous success particularly in the area of computer vision and natural language processing.
-Machines can now learn to recognize an object in an image with higher accuracy than human, synthesize a novel, and beat a world champion Go player.
-However, they still struggle in tasks that involve reasoning operations. For example, deep learning system today have difficulty in
-identify cause and effect (causal reasoning), and understanding what is to the left of an object (spatial-temporal reasoning).
-
+According to \cite{bottou2014machine}, reasoning refers to the ability to ``algebraically manipulating previously acquired knowledge in order to answer a new question''.
 Historically, the approach to create an AI system capable of reasoning has been from a symbolic point of view.
 In a symbolic AI, knowledge is represented as symbols, rules are handcrafted by human, and reasoning is the process of inference.
-However, these systems do not scale to real-world applications, as fixed symbols and rules cannot represents enough information. 
-This has paved the way to the current trend of a sub-symbolic deep learning approach, which utilise artificial neural networks. 
+However, these systems have been overshadowed by the success of deep learning in various domains in the past decades.
 
-With the goal to improve deep learning system beyond pattern matching, AI researchers have tried to combine symbolic AI with neural networks,
-which became subfield called Neural-symbolic. Apart from that, researchers also take inspiration from neuroscience. 
+Despite the astonishing power of the neural networks, they tend to learn statistical mapping between input and output,
+rather than the true causal relations. With the goal to improve deep learning system beyond pattern matching, many researchers have tried to combine symbolic AI with neural networks,
+which became a subfield called Neural-symbolic. Apart from that, researchers also take inspiration from neuroscience. 
 As human reasoning involves extracting knowledge from memory and paying attention to specific part of information, 
 this has resulted in an extension of neural network in the form of memory and attention mechanism. 
 
@@ -102,9 +99,7 @@ A Neural Turing Machine (NTM) contains two major components: a neural network co
 A controller can be any type of neural networks, feed forward or RNN, and is responsible for read and write operations on the memory matrix.
 The read and write operations are done selectively by soft attention mechanism, making every components fully differentiable, 
 and thereby the whole model can be trained using gradient descent. The experiments reported in \cite{graves2014neural} have shown that NTM significantly
-outperforms traditional LSTM in tasks, such as copying and sorting. Memory networks \cite{graves2014neural} are similar to NTM in the sense that they both utilise external memory, attention mechanism to select information from memory, and
-can be trained end to end with gradient based learning. However, one major difference is that the memory cells in the memory networks are more static, 
-as controller in memory networks only allowed read operation.
+outperforms traditional LSTM in tasks, such as copying and sorting.
 
 \begin{figure}[htb]
   \centering
@@ -131,20 +126,20 @@ In contrast to the purely sub-symbolic systems mention in the previous approache
 The idea is that the symbolic part world help the system logically reason about symbols, which is what traditional neural networks are weak at, 
 while the neural network part would allow the system to learn, which the symbolic AI is not capable of.
 
-In a visual question answering (VQA) task, recent neural-symbolic systems: NS-VQA \cite{nsvqa} and NS-CL \cite{Mao2019NeuroSymbolic} employed deep representation learning
+In a visual question answering (VQA) task, recent neural-symbolic system, NS-CL \cite{Mao2019NeuroSymbolic} employed deep representation learning
 for visual recognition and language understanding, while the reasoning part is solved by symbolic program execution.
 The framework proposed in NS-CL contains three separate modules: 
 a visual module where the objects are detected and vector representations are extracted, 
 a semantic parser where the question text is parsed into a tree of predefined domain specific language (DSL) of executable program,
 and a symbolic program executer which take in the parsed program and vector representation of objects to derive the answer. 
+
 It has been shown that this method requires significantly less amount of training data to accurately answer questions, 
 and was able to generalize to new scenes and questions better than traditional neural networks based method. 
-Another added benefit of the neural-symbolic system is that the results are fully interpretable, as the execution trace is available.
-Figure \ref{nscl} shows the result of this model on the VQS dataset, with the generated symbolic program.
-
-One significantly limitation of this approach is that the symbolic functions and the DSL need to be pre-defined. 
+Another added benefit of the neural-symbolic system is that the results are fully interpretable, as the execution trace is visible.
+Figure \ref{nscl} shows the result of this model on the VQS dataset, along with the generated symbolic program. 
+On the other hand, one significantly limitation is that the symbolic functions (DSL) need to be pre-defined. 
 As shown in \cite{Mao2019NeuroSymbolic}, functions such as filter, count and query are hard-coded into the system, 
-therefore this method wouldn't be able to scale in the real-world system, as new functions cannot be learned.
+thus this method wouldn't be able to scale in the real-world system.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{nscl.png}
@@ -162,7 +157,7 @@ In GNN, the node, edge and output can be flexibly represented in different types
 For instance, when the input is the image, the node would represent the patch of the image, and
 when the text is the input, the node would represent a sequence of words.
 
-It has been shown that GNN is well suited for relational reasoning task, due to the strong relational inductive bias \cite{47094}.
+It has been shown that GNN is well suited for relational reasoning task, due to the strong relational inductive bias \cite{graphnetworks}.
 In contrast to CNN, where the inductive bias is the locality of the receptive field, and RNN where the bias is the sequentiality of data,
 GNN can express arbitrary relationship among entities. 
 Recent work in \cite{xu2019can} studied what task a neural network can learn to reason. 
@@ -182,7 +177,7 @@ Figure \ref{nsm} shows the overall process with the generated scene graph.
   \label{nsm}
 \end{figure}
 
-\section{Conclusion}
+\section{Discussion}
 
 We have seen several approaches in building a neural networks with reasoning capability. 
 Each approach has its own strength and weakness.

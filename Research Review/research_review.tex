@@ -6,12 +6,11 @@
 
 \title{Reasoning in Artificial Neural Networks}
 
-\author{%
+\author{
   \IEEEauthorblockN{Vasin Srisupavanich}
 }
 
 \maketitle
-
 
 \begin{abstract}
 Over the past decade, deep learning systems have enjoyed tremendous success in the area of computer vision and natural language understanding.
@@ -58,7 +57,7 @@ while ignoring other irrelevant information, making unfocused region blurry.
 Similarly, in the context of machine translation, attention model enables the machine to focus on specific words at a time 
 rather than the full sentence.
 
-In a neural machine translation model (NMT), the architecture typically consists of an encoder-decoder (seq2seq) structure.
+To illustrate, in a neural machine translation model (NMT), the architecture typically consists of an encoder-decoder (seq2seq) structure.
 An encoder, usually a recurrent neural networks (RNN), learn to encode a source sentence into a fixed length vector.
 Then the decoder network output the encoded vector into another language. Figure \ref{NMT}(a) shows the traditional encoder-decoder architecture.
 The apparent problem of this architecture is that the model tends to forget relevant information in a long sentence.
@@ -78,10 +77,10 @@ In another influential paper by Xu et al \cite{xu2015show}, attention model is a
 In this task, convolutional neural networks (CNN) is used as an encoder to extract features from raw images.
 Then a long short-term memory network (LSTM) is used to generate the words, conditioned on the attention weights.
 Figure \ref{attention} demonstrate how the model learn to attend to specific part of the image with the corresponding word. 
-Also proposed in \cite{xu2015show}, the attention models can be classified in two types: soft and hard attention. 
+Also proposed in \cite{xu2015show}, the attention model can be classified in two types: soft and hard attention. 
 In soft attention, the model is smooth and differentiable end to end, and the context vector is computed by the weighted average of the whole image. 
-In contrast, in hard attention, the context vector is computed from stochastically sampled patch of image. 
-The hard attention model can be faster when making inference, however, they are difficult to optimized, and require reinforcement learning to train.
+In contrast, in hard attention, the context vector is computed from stochastically sampled patch of image, 
+which makes the model non-differentiable and requires reinforcement learning to train.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{attention.png}
@@ -111,7 +110,7 @@ outperforms traditional LSTM in tasks, such as copying and sorting.
 
 Another recent neural networks model, utilizing both attention and memory, designed to facilitate explicit reasoning is the MAC networks \cite{hudson2018compositional}.
 In contrast to NTM, the MAC networks don't utilizing a global external memory. Instead, each node (MAC cell) is recurrent, and has its own memory and control state.
-In contrast to traditional neural networks, the separation between control and memory encourages the networks to 
+In contrast to the traditional neural networks, the separation between control and memory encourages the networks to 
 learn the computational process and reasoning operations, rather than to approximate direct transformation between the input and output.
 Figure \ref{mac-clevr} shows the result of the MAC networks from a visual reasoning task using CLEVR data set \cite{johnson2017clevr}. 
 The MAC networks was able to achieve 98.94\% accuracy, halving the error rate from the best prior model.
@@ -122,25 +121,24 @@ The MAC networks was able to achieve 98.94\% accuracy, halving the error rate fr
 \end{figure}
 
 \subsection{Neural-Symbolic}
+The aim of the neural-symbolic approach is to combine the complementary strengths of symbolic AI, 
+which is the ability to logically reason about symbols and neural networks, which is the ability to learn to improve over time.
+This hybrid AI system has given impressive results in many applications, and is gaining more traction recently in the AI community.
 
-In contrast to the purely sub-symbolic systems mention in the previous approaches, neural-symbolic is the subfield that try to integrate symbolic AI with the deep learning system. 
-The idea is that the symbolic part world help the system logically reason about symbols, which is what traditional neural networks are weak at, 
-while the neural network part would allow the system to learn, which the symbolic AI is not capable of.
-
-In a visual question answering (VQA) task, recent neural-symbolic system, NS-CL \cite{Mao2019NeuroSymbolic} employed deep representation learning
+In a visual question answering (VQA) task, a recent neural-symbolic system, NS-CL \cite{Mao2019NeuroSymbolic} employed deep representation learning (CNN, LSTM)
 for visual recognition and language understanding, while the reasoning part is solved by symbolic program execution.
 The framework proposed in NS-CL contains three separate modules: 
-a visual module where the objects are detected and vector representations are extracted, 
-a semantic parser where the question text is parsed into a tree of predefined domain specific language (DSL) of executable program,
-and a symbolic program executer which take in the parsed program and vector representation of objects to derive the answer. 
+a \textit{visual module} where the objects are detected and vector representations are extracted, 
+a \textit{semantic parser} where the question text is parsed into a tree of pre-defined domain specific language (DSL) of executable program,
+and a \textit{symbolic program} executer which take in the parsed program and vector representation of objects to derive the answer. 
 
-It has been shown that this method requires significantly less amount of training data to accurately answer questions, 
-and was able to generalize to new scenes and questions better than traditional neural networks based method. 
-Another added benefit of the neural-symbolic system is that the results are fully interpretable, as the execution trace is visible.
-Figure \ref{nscl} shows the result of this model on the VQS dataset, along with the generated symbolic program. 
-On the other hand, one significantly limitation is that the symbolic functions (DSL) need to be pre-defined. 
+The experiments reported in \cite{Mao2019NeuroSymbolic} shows that this method requires significantly less amount of training data to accurately answer questions, 
+and is able to generalize to new scenes and questions better than other methods. 
+Another benefit of this approach is that the results are fully interpretable, as the execution trace is visible.
+Figure \ref{nscl} shows the result of this model on the VQS dataset, along with the generated symbolic programs. 
+On the other hand, one significant limitation is that the symbolic functions (DSL) need to be pre-defined. 
 As shown in \cite{Mao2019NeuroSymbolic}, functions such as filter, count and query are hard-coded into the system, 
-thus this method wouldn't be able to scale in the real-world system.
+which make it difficult to translate into the real-world system.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{nscl.png}
@@ -150,27 +148,29 @@ thus this method wouldn't be able to scale in the real-world system.
 
 \subsection{Graph Neural Networks}
 
-Recently, graph neural networks (GNN) has been gaining popularity in various domains, 
-particularly in tasks where data are represented as graph with complex relationship and interdependency between objects.
+Graph neural networks (GNN) can be described as a type of neural networks which operates on the graph structure.
+It is particularly suited for tasks where data are represented as graph with complex relationship and interdependency between objects.
 A graph is a data structure consisted of vertices (nodes) and edges.
-Depending on the relationship between two objects, the edge can either be directed or undirected. 
-In GNN, the node, edge and output can be flexibly represented in different types depending on the tasks. 
-For instance, when the input is the image, the node would represent the patch of the image, and
-when the text is the input, the node would represent a sequence of words.
+The edge can either be directed or undirected, depending on the relationship between objects, 
+In GNN, the node, edge and output can be flexibly represented in different types depending on the task. 
+For instance, the node can represent the patch of the image or a sequence of words when the input is text.
 
-It has been shown that GNN is well suited for relational reasoning task, due to the strong relational inductive bias \cite{graphnetworks}.
-In contrast to CNN, where the inductive bias is the locality of the receptive field, and RNN where the bias is the sequentiality of data,
-GNN can express arbitrary relationship among entities. 
-Recent work in \cite{xu2019can} studied what task a neural network can learn to reason. 
-The result revealed that the performance of the neural networks increase with more algorithmic alignment in the reasoning process, 
-and the reason that GNN generalized better than other types of neural networks in many reasoning tasks is because the underlying reasoning process of GNN resemble dynamic programming.
+It has been shown that GNN is well suited for relational reasoning tasks, because of the strong relational inductive bias \cite{graphnetworks}.
+In contrast to CNN, where the inductive bias is the locality of the receptive field, 
+and RNN where the bias is the sequentiality of data, GNN can express arbitrary relationship among entities. 
+A recent paper by Xu et al. \cite{xu2019can} studied what tasks a neural network can learn to reason. 
+The result revealed that the performance of the neural networks increase 
+when the computational structure of the neural networks align with the algorithmic structure of the reasoning process. 
+Moreover, the reason that GNN is able to generalize better than other types of neural networks is 
+because the underlying reasoning process of GNN resembles dynamic programming.
 
 To illustrate the use of the graph networks, a recent model called Neural State Machine (NSM) \cite{hudson2019learning} utilized graph structure to represent the scene of an image in a VQA task.
 This model works in two stages: modeling and inference. 
 In the modeling stage, the image is decomposed into a probabilistic graph that capture the semantic of the visual scene.
 The node corresponds to object within the image, while the edge represents both spatial and semantic relation.
 In the inference stage, the sequential reasoning process is performed over the graph by iteratively traversing its node guided by the question.
-Figure \ref{nsm} shows the overall process with the generated scene graph.
+Figure \ref{nsm} shows the overall process of NSM, with the generated scene graph.
+As reported in \cite{hudson2019learning}, this model has achieved state-of-the-art result in various visual reasoning benchmarks.
 
 \begin{figure}[htb]
   \includegraphics[width=\linewidth]{NSM.png}

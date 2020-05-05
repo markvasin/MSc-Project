@@ -63,7 +63,7 @@ Then the decoder network output the encoded vector into another language. Figure
 The apparent problem of this architecture is that the model tends to forget relevant information in a long sentence.
 With the addition of attention model (figure \ref{NMT}(b)), this problem is mitigated, 
 as the decoder can learn to attend to different parts of the source sentence. 
-The attention weights, which are from a feed forward neural networks, are jointly train along with the encoder-decoder networks.
+The attention weights, which are from a feed forward neural networks, are jointly trained along with the encoder-decoder networks.
 
 \begin{figure}[htb]
   \centering
@@ -76,7 +76,7 @@ The attention weights, which are from a feed forward neural networks, are jointl
 In another influential paper by Xu et al \cite{xu2015show}, attention model is applied to generate caption from images. 
 In this task, convolutional neural networks (CNN) is used as an encoder to extract features from raw images.
 Then a long short-term memory network (LSTM) is used to generate the words, conditioned on the attention weights.
-Figure \ref{attention} demonstrate how the model learn to attend to specific part of the image with the corresponding word. 
+Figure \ref{attention} demonstrate how the model learns to attend to specific part of the image with the corresponding word. 
 Also proposed in \cite{xu2015show}, the attention model can be classified in two types: soft and hard attention. 
 In soft attention, the model is smooth and differentiable end-to-end, and the context vector is computed by the weighted average of the whole image. 
 In contrast, in hard attention, the context vector is computed from stochastically sampled patch of image, 
@@ -145,7 +145,7 @@ Another benefit of this approach is that the results are fully interpretable, as
 unlike a black box system in a traditional ANN.
 Figure \ref{nscl} shows the result of this model on the VQS dataset, along with the generated symbolic programs. 
 On the other hand, one significant limitation is that the symbolic functions (DSL) need to be pre-defined. 
-As shown in \cite{Mao2019NeuroSymbolic}, functions such as filter, count and query are hard-coded into the system, 
+As shown in figure \ref{nscl}, functions such as filter, count and query are hard-coded into the system, 
 which make it difficult to translate into the real-world system.
 
 
@@ -154,7 +154,7 @@ which make it difficult to translate into the real-world system.
 Graph neural networks (GNN) can be described as a type of neural networks which operates on the graph structure.
 It is particularly suited for tasks where data are represented as graph with complex relationship and interdependency between objects.
 A graph is a data structure consisted of vertices (nodes) and edges.
-The edge can either be directed or undirected, depending on the relationship between objects, 
+The edge can either be directed or undirected depending on the relationship between objects.
 In GNN, the node, edge and output can be flexibly represented in different types depending on the task. 
 For instance, the node can represent the patch of the image or a sequence of words when the input is text.
 

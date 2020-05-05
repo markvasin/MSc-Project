@@ -16,9 +16,9 @@
 \begin{abstract}
 Over the past decade, deep learning systems have enjoyed tremendous success in the area of computer vision and natural language understanding.
 However, these systems still struggle in tasks which require deliberate thinking and reasoning process. 
-Recently, many approaches to extends the capability of the neural networks have emerged. 
+Recently, many approaches to extend the capability of the neural networks have emerged. 
 This paper reviews several recent approaches which takes inspiration from human's cognitive process and symbolic view of artificial intelligence
-to solve reasoning tasks, and outline future research directions in this challenging problem.
+to solve reasoning tasks, and outlines future research directions in this challenging problem.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -32,7 +32,7 @@ It allows us to understand abstract concepts and make complex decisions.
 Human excels at tasks that require deliberate thinking, such as planning and symbol manipulation, 
 while the current state of machines are limited to simpler pattern matching problems.
 Incorporating reasoning ability to machines has been a long standing goal, but a very difficult challenge in the field of Artificial Intelligence (AI). 
-Solving this problem would mean a significant step toward artificial general intelligence, which will ultimately benefits humankind. 
+Solving this problem would mean a significant step toward artificial general intelligence, which will ultimately benefit humankind. 
 This paper reviews recent approaches in building artificial neural networks (ANN) that can learn to reason, 
 and overview the current state of the art results and applications from deep learning systems with reasoning capability.
 
@@ -40,25 +40,26 @@ and overview the current state of the art results and applications from deep lea
 According to \cite{bottou2014machine}, reasoning refers to the ability to ``algebraically manipulating previously acquired knowledge in order to answer a new question''.
 Historically, the approach to create an AI system capable of reasoning has been from a symbolic point of view.
 In a symbolic AI, knowledge is represented as symbols, rules are handcrafted by human, and reasoning is the process of inference.
-However, these systems have been overshadowed by the success of deep learning in various domains in the past decades.
+However, these systems have been overshadowed by the success of deep learning in various domains in the past decades. 
 
-Despite the astonishing power of the neural networks, they tend to learn statistical mapping between input and output,
-rather than the true causal relations. With the goal to improve deep learning system beyond pattern matching, many researchers have tried to combine symbolic AI with neural networks,
-which became a subfield called Neural-symbolic. Apart from that, researchers also take inspiration from neuroscience. 
-As human reasoning involves extracting knowledge from memory and paying attention to specific part of information, 
-this has resulted in an extension of neural network in the form of memory and attention mechanism. 
+Despite the astonishing power of the neural networks, they tend to learn statistical mapping between input and output, rather than the true causal relations. 
+To address this shortcoming, ideas about symbols and reasoning in symbolic AI have been integrated in neural networks in various forms, 
+either explicit in a Neural-Symbolic approach, or implicit in a Graph Neural Networks model.
+In addition, recent advances in deep learning, such as attention mechanism and the use of external memory, have been greatly inspired by the field of neuroscience, as 
+human reasoning involves paying attention to specific parts of information and knowledge which are extracted from memory.
 
 \section{Main Approaches}
 \subsection{Attention Mechanism}
-Attention mechanism was first introduced in 2014 for a machine translation task \cite{bahdanau2014neural}.
-Since then this mechanism has became an important tool for deep learning in various applications. 
-This idea is loosely motivated by how human biological system works. For instance, human visual attention allows us to 
-focus on specific region with high resolution, while ignoring other irrelevant information. 
-In the context of machine translation, attention model enables the machine to focus on specific words at a time 
+Attention mechanism was first introduced in 2014 in the context of machine translation \cite{bahdanau2014neural}, 
+and became one of the most prominent tools in deep learning. 
+This idea is loosely motivated by how human biological system works. 
+In a human visual system, attention allows us to focus on specific region with high resolution, 
+while ignoring other irrelevant information, making unfocused region blurry.
+Similarly, in the context of machine translation, attention model enables the machine to focus on specific words at a time 
 rather than the full sentence.
 
-In a neural machine translation model (NMT), the architecture consists of an encoder-decoder (seq2seq) structure.
-An encoder, typically a recurrent neural networks (RNN), learn to encode a source sentence into a fixed length vector.
+In a neural machine translation model (NMT), the architecture typically consists of an encoder-decoder (seq2seq) structure.
+An encoder, usually a recurrent neural networks (RNN), learn to encode a source sentence into a fixed length vector.
 Then the decoder network output the encoded vector into another language. Figure \ref{NMT}(a) shows the traditional encoder-decoder architecture.
 The apparent problem of this architecture is that the model tends to forget relevant information in a long sentence.
 With the addition of attention model (figure \ref{NMT}(b)), this problem is mitigated, 

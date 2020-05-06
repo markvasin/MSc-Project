@@ -54,7 +54,7 @@ and became one of the most prominent tools in deep learning.
 This idea is loosely motivated by how human biological system works. 
 In a human visual system, attention allows us to focus on specific region with high resolution, 
 while ignoring other irrelevant information, making unfocused region blurry.
-Similarly, in the context of machine translation, attention model enables the machine to focus on specific words at a time 
+Similarly, in machine translation, attention model enables the machine to focus on specific words at a time 
 rather than the full sentence.
 
 To illustrate, in a neural machine translation model (NMT), the architecture typically consists of an encoder-decoder (seq2seq) structure.
@@ -156,7 +156,7 @@ It is particularly suited for tasks where data are represented as graph with com
 A graph is a data structure consisted of vertices (nodes) and edges.
 The edge can either be directed or undirected depending on the relationship between objects.
 In GNN, the node, edge and output can be flexibly represented in different types depending on the task. 
-For instance, the node can represent the patch of the image or a sequence of words when the input is text.
+For instance, the node can represent the patch of the image, or a sequence of words when the input is text.
 
 It is reported that GNN is well suited for relational reasoning tasks, because of the strong relational inductive bias \cite{graphnetworks}.
 In contrast to CNN, where the inductive bias is the locality of the receptive field, 
@@ -183,13 +183,13 @@ As reported in \cite{hudson2019learning}, this model has achieved state-of-the-a
 
 \section{Discussion}
 
-We have seen several approaches in building a neural networks with reasoning capability.
+We have seen several approaches in building a neural networks with some types of reasoning capability.
 The attention mechanism allows the model to focus on the specific part of information, 
 but this method alone cannot be used to solve the reasoning task.
 Similar to a working memory in the human brain, 
 adding explicit external memory gives the model the ability to utilize previous knowledge.
 However, the networks with global memory can be extremely difficult to train. 
-In a neural-symbolic system, the results can be more interpretable and explainable,
+In a neural-symbolic system, the results are more interpretable and explainable,
 still, this come with a cost of fixed symbolic functions, making it difficult to scale into practice.
 In contrast to neural-symbolic approach, a GNN can be used to recreate the symbolic structure, 
 while maintaining the end-to-end differentiability. Yet, many problems and processes cannot be easily represented as graph.
@@ -200,8 +200,8 @@ To augment neural networks with memory, questions of how information are stored
 and which type of memory to use, are still need to be solved. 
 Moreover, in order to generalize reasoning operations to unseen tasks, 
 we would need to find better ways to represent data, or concepts in a disentangle way.
-However, considering the recent breakthrough and the similarity with human's cognitive process, 
-the use of attention mechanism, memory, and the right inductive prior, could be the right step towards making a machine that is more intelligent.
+However, considering the recent breakthroughs and the similarity with human's cognitive process, 
+the use of attention mechanism, memory, and the right inductive prior could be the right step towards making a machine that is more intelligent.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

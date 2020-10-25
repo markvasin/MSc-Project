@@ -13,5 +13,8 @@ The model was implemented using Python and PyTorch deep learning library. I also
 ## Analysis
 Example of visualisation of the reasoning process of the model. For more details, please see the analysis section in the [dissertation](Dissertation/MSc_Dissertation.pdf).
 
-![vis-1](Images/best1.jpg)
+<p align="center">
+	<img src="Images/best1.jpg" width="500">
+</p>
+
 ![vis-1va](Images/best1-va.jpg)

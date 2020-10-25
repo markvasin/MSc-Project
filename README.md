@@ -1,1 +1,7 @@
-# MSc-Project
+# Multimodal Learning and Reasoning for Visual Question Answering
+This repository contains the [dissertation](Dissertation/MSc_Dissertation.pdf), [presentation slides](Presentation/msc-project-slides.pdf), [project plan](Project%20Plan/Project%20Plan.pdf), [project brief](Project%20Brief/Project%20Brief.pdf) and [project poster](Project%20Poster/poster.pdf).
+
+![Image of model](images/model-framework.png)
+
+## Abstract
+Current deep learning systems are very successful in sensory perception and pattern recognition (e.g. object detection and speech recognition). However, they often struggle in tasks with a compositional nature which require more deliberate thinking and multi-step reasoning. In this work, we study how we can improve the reasoning capability of artificial neural networks in the context of visual question answering (VQA) and visual reasoning. These two tasks are challenging multimodal research problem, which requires fine-grained understanding of both image and question, and typically demands the ability to perform multi-step inferences. As part of this work, we develop a new VQA model based on the novel Transformer architecture, utilising both self-attention and co-attention mechanism for dealing with multimodal input. Experimental results demonstrate that Transformer based model can be effective in a visual reasoning task, as our model achieves strong results on both CLEVR and GQA dataset with 98.3% and 56.28% accuracy respectively. Our analysis shows that the model learns to look around the image and iteratively focus on parts of the image that are relevant to finding an answer, indicating that it is capable of performing multi-step reasoning.
